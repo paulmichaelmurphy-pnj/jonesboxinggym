@@ -1,0 +1,424 @@
+/* ================================
+   Jones Boxing Gym — Black/White/Blue Theme
+   Replace your entire src/index.css with this file.
+   ================================= */
+
+/* ---- Brand palette (tweak if you want a different blue) ---- */
+:root{
+  /* Base */
+  --bg: #05070c;          /* deep navy-black */
+  --card: #0b1220;        /* dark blue-black */
+  --text: #ffffff;        /* white */
+  --muted: #b9c2d3;       /* cool grey-blue */
+  --line: #14213a;        /* border navy */
+
+  /* Brand blues */
+  --accent: #2f7bff;      /* primary blue */
+  --accent2: #00b7ff;     /* optional secondary (cyan) */
+
+  /* Status */
+  --warnBorder: rgba(47, 123, 255, 0.35);
+  --warnBg: rgba(47, 123, 255, 0.10);
+  --warnText: #cfe1ff;
+
+  /* Shadows */
+  --shadow: 0 12px 40px rgba(0,0,0,0.50);
+
+  /* Radius */
+  --r-lg: 18px;
+  --r-md: 14px;
+  --r-sm: 12px;
+
+  /* Typography */
+  --font: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+}
+
+*{ box-sizing:border-box; }
+
+html, body { height:100%; }
+
+body{
+  margin:0;
+  font-family: var(--font);
+  color: var(--text);
+  background:
+    radial-gradient(900px 450px at 18% 10%, rgba(47,123,255,0.16), transparent 60%),
+    radial-gradient(900px 450px at 80% 0%, rgba(0,183,255,0.10), transparent 55%),
+    radial-gradient(700px 400px at 70% 100%, rgba(255,255,255,0.06), transparent 60%),
+    var(--bg);
+}
+
+/* Links */
+a{ color: inherit; text-decoration: none; }
+a:hover{ text-decoration: underline; }
+
+/* Layout */
+.wrap{
+  min-height:100vh;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  padding:16px;
+}
+
+.container{
+  width:100%;
+  max-width:980px;
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:14px;
+}
+
+@media (min-width: 980px){
+  .container{ grid-template-columns: 380px 1fr; }
+}
+
+/* Cards */
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02));
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: 16px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(6px);
+}
+
+.brand{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  margin-bottom:10px;
+}
+
+.logo{
+  width:44px;
+  height:44px;
+  border-radius: 14px;
+  border:1px solid var(--line);
+  background:
+    radial-gradient(12px 12px at 30% 30%, rgba(255,255,255,0.25), transparent 60%),
+    linear-gradient(180deg, rgba(47,123,255,0.25), rgba(0,0,0,0.15));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  color: var(--text);
+}
+
+h1{
+  margin:0;
+  font-size:18px;
+  letter-spacing:0.2px;
+}
+
+.sub{
+  margin:4px 0 0;
+  color: var(--muted);
+  font-size:12px;
+}
+
+/* Inputs */
+.label{
+  display:block;
+  font-size:12px;
+  color: var(--muted);
+  margin:10px 0 7px;
+}
+
+.input, select{
+  width:100%;
+  padding: 12px 12px;
+  border-radius: var(--r-sm);
+  border:1px solid var(--line);
+  background: rgba(0,0,0,0.35);
+  color: var(--text);
+  outline:none;
+}
+
+.input::placeholder{ color: rgba(185,194,211,0.7); }
+
+.input:focus, select:focus{
+  border-color: rgba(47,123,255,0.65);
+  box-shadow: 0 0 0 3px rgba(47,123,255,0.18);
+}
+
+select{
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, rgba(185,194,211,0.9) 50%),
+    linear-gradient(135deg, rgba(185,194,211,0.9) 50%, transparent 50%);
+  background-position:
+    calc(100% - 18px) calc(1em + 2px),
+    calc(100% - 13px) calc(1em + 2px);
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: 34px;
+}
+
+/* Form rows */
+.row{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:10px;
+}
+
+@media (max-width: 420px){
+  .row{ grid-template-columns: 1fr; }
+}
+
+/* Buttons */
+.btn{
+  width:100%;
+  margin-top:12px;
+  padding:12px 14px;
+  border-radius: var(--r-sm);
+  border:1px solid rgba(47,123,255,0.55);
+  background:
+    linear-gradient(180deg, rgba(47,123,255,0.95), rgba(47,123,255,0.72));
+  color:#07101e;
+  font-weight: 900;
+  cursor:pointer;
+  transition: transform 120ms ease, filter 120ms ease, box-shadow 120ms ease;
+}
+
+.btn:hover{
+  filter: brightness(1.04);
+  box-shadow: 0 10px 26px rgba(47,123,255,0.18);
+}
+
+.btn:active{
+  transform: translateY(1px);
+}
+
+.btn.secondary{
+  border:1px solid var(--line);
+  background: rgba(255,255,255,0.08);
+  color: var(--text);
+}
+
+.btn.secondary:hover{
+  background: rgba(255,255,255,0.10);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+}
+
+.btn:disabled{
+  opacity:0.55;
+  cursor:not-allowed;
+  box-shadow: none;
+}
+
+/* Chips (View: Session/Week/Camp) */
+.chips{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+
+.chip{
+  padding:10px 12px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,0.05);
+  color: var(--text);
+  cursor:pointer;
+  font-weight:800;
+  transition: background 120ms ease, border-color 120ms ease, transform 120ms ease;
+}
+
+.chip:hover{
+  background: rgba(255,255,255,0.07);
+}
+
+.chip:active{
+  transform: translateY(1px);
+}
+
+.chip.active{
+  border-color: rgba(47,123,255,0.70);
+  background: rgba(47,123,255,0.18);
+}
+
+/* Badges */
+.badges{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+
+.badge{
+  font-size:12px;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,0.06);
+  color: var(--muted);
+}
+
+/* Warning/info panel (weight cut note etc.) */
+.warn{
+  margin-top:10px;
+  padding:10px;
+  border-radius: var(--r-md);
+  border:1px solid var(--warnBorder);
+  background: var(--warnBg);
+  color: var(--warnText);
+  font-size:12px;
+  line-height:1.35;
+}
+
+.warn b{ color: #eaf1ff; }
+
+/* Plan layout */
+.plan{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.week{
+  border:1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: rgba(0,0,0,0.25);
+  padding:12px;
+}
+
+.weekHead{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.weekTitle{
+  font-weight: 950;
+  letter-spacing: 0.2px;
+}
+
+.phase{
+  font-size:12px;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(47,123,255,0.35);
+  background: rgba(47,123,255,0.12);
+  color: #cfe1ff;
+}
+
+/* Day blocks */
+.day{
+  margin-top:10px;
+  border:1px solid var(--line);
+  border-radius: var(--r-md);
+  background: rgba(255,255,255,0.03);
+  padding:10px;
+}
+
+.dayTop{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.dayTitle{
+  font-weight: 900;
+}
+
+.small{
+  font-size:12px;
+  color: var(--muted);
+}
+
+/* Details */
+details{
+  margin-top:6px;
+}
+
+details summary{
+  cursor:pointer;
+  color: var(--muted);
+  font-size:13px;
+  user-select: none;
+  list-style: none;
+}
+
+details summary::-webkit-details-marker{
+  display:none;
+}
+
+details summary::before{
+  content: "▸";
+  display:inline-block;
+  margin-right:8px;
+  color: rgba(47,123,255,0.85);
+  transform: translateY(-1px);
+}
+
+details[open] summary::before{
+  content: "▾";
+}
+
+/* Lists */
+ul{
+  margin:8px 0 0 18px;
+  color: #eaf1ff;
+}
+
+li{
+  margin:5px 0;
+}
+
+/* Footer note */
+.footerNote{
+  margin-top:10px;
+  font-size:12px;
+  color: var(--muted);
+  line-height:1.4;
+}
+
+/* Optional: make the right card scroll nicely on desktop */
+@media (min-width: 980px){
+  .container > .card:nth-child(2){
+    max-height: calc(100vh - 32px);
+    overflow: auto;
+  }
+  .container > .card:nth-child(2)::-webkit-scrollbar{
+    width:10px;
+  }
+  .container > .card:nth-child(2)::-webkit-scrollbar-thumb{
+    background: rgba(255,255,255,0.10);
+    border-radius: 999px;
+  }
+  .container > .card:nth-child(2)::-webkit-scrollbar-thumb:hover{
+    background: rgba(255,255,255,0.14);
+  }
+}
+
+/* Print styling (helps PDF export readability) */
+@media print {
+  :root{
+    --bg:#ffffff;
+    --text:#000000;
+    --muted:#333333;
+  }
+  body{
+    background:#ffffff !important;
+    color:#000000 !important;
+  }
+  .wrap{ padding:0; }
+  .container{ display:block; max-width:100%; }
+  .card{
+    box-shadow:none;
+    border:1px solid #ddd;
+    background:#fff;
+    margin-bottom:12px;
+  }
+  .btn, .chips, .badge, .logo { display:none !important; }
+  details{ border:none; }
+  details summary{ display:none; }
+  details[open] { margin-top:0; }
+}
